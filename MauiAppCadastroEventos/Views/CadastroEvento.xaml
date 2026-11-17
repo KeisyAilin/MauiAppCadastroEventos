@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCadastroEventos.Views.CadastroEvento"
+             Title="CadastroEvento"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#EFEBE9">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             VerticalOptions="CenterAndExpand">
+
+
+            <Label Text="Cadastro de Evento" TextColor="#582f0e"
+                   FontFamily="Kalam" FontSize="40"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        
+            <Border Stroke="Black" StrokeShape="roundrectangle 10"
+                    StrokeThickness="1.5" Padding="20">
+
+                <VerticalStackLayout Spacing="5">
+
+                    <Label Text="Nome do Evento:" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <Entry x:Name="txtNome" Placeholder="Ex: Festival de Música" TextColor="#4E342E"
+                           BackgroundColor="#FFFFFF" PlaceholderColor="#8D6E63"/>
+
+                    <Label Text="Local do Evento:" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <Entry x:Name="txtLocal" Placeholder="Ex: Teatro Municipal" TextColor="#4E342E"
+                           BackgroundColor="#FFFFFF" PlaceholderColor="#8D6E63"/>
+
+                    <Border Stroke="Black" StrokeShape="roundrectangle 10"
+                            StrokeThickness="1" Padding="20" Margin="0,10,0,10">
+
+                        <VerticalStackLayout>
+
+                            <Label Text="Data do Evento" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                            <HorizontalStackLayout Margin="20,10,0,0">
+
+                                <Label Text="Início:" FontAttributes="Bold" TextColor="#4E342E"/>
+                                <DatePicker x:Name="dtp_inicio" Format="dd/MM/yyyy" Margin="10,0,0,0"
+                                            DateSelected="dtp_inicio_DateSelected" TextColor="black" BackgroundColor="#D7CCC8"/>
+
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Margin="20,20,0,0">
+
+                                <Label Text="Término:" FontAttributes="Bold" TextColor="#4E342E"/>
+                                <DatePicker x:Name="dtp_termino" Format="dd/MM/yyyy" Margin="10,0,0,0"
+                                            TextColor="black" BackgroundColor="#D7CCC8"/>
+
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Label Text="Número de Participantes:" FontAttributes="Bold" TextColor="Black"/>
+                    <HorizontalStackLayout Spacing="15" Margin="20,0,0,5">
+                        <Label Text="{Binding Source={x:Reference stp_participantes}, Path=Value, StringFormat='{0:F0} pessoa(s)'}"
+                               VerticalOptions="Center" TextColor="#7f4f24" FontAttributes="Bold"/>
+
+                        <Stepper x:Name="stp_participantes" Minimum="1" Maximum="1000"
+                                 Value="1" BackgroundColor="#936639"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Custo por Participante:" FontAttributes="Bold" TextColor="black"/>
+                    <Entry x:Name="txtCusto" Keyboard="Numeric" TextColor="white"
+                           Placeholder="R$ 0,00" PlaceholderColor="white" BackgroundColor="#a68a64"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Finalizar Cadastro" Clicked="Button_Clicked" Margin="0,20,0,0"
+                    BackgroundColor="#7f4f24" TextColor="white" FontSize="18"
+                    CornerRadius="20" FontAttributes="Bold" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
